@@ -1,7 +1,7 @@
 import * as types from '../store/types.js';
 import { avatarGenerator } from '../assets/utils/avatarGenerator.js';
 
-const initComments = [
+const initComments = [ //initial list of comments
   {
     id: 1,
     avatar: 1,
@@ -74,7 +74,7 @@ const initComments = [
   }
 ];
 
-const initReplyComments = [
+const initReplyComments = [ //initial list of reply comments
   {
     id: 1,
     avatar: 2,
@@ -112,7 +112,7 @@ const initState = {
 const commentsReducer = (state = initState, action) => {
   let { comments, replyComment } = state;
   switch (action.type) {
-    case types.ADD: {
+    case types.ADD: { //add a comment
       let { content } = action.payload;
 
       const newComment = {
@@ -132,7 +132,7 @@ const commentsReducer = (state = initState, action) => {
       }
     }
 
-    case types.LIKE: {
+    case types.LIKE: { //like a comment
       let { target } = action.payload;
       comments[target].liked = !comments[target].liked;
       if (comments[target].liked) {
@@ -146,7 +146,7 @@ const commentsReducer = (state = initState, action) => {
       }
     }
 
-    case types.REPLY_LIKE: {
+    case types.REPLY_LIKE: { //like a replied comment
       let { target } = action.payload;
       const reply_index = target-1;
       replyComment[reply_index].liked = !replyComment[reply_index].liked;
@@ -162,7 +162,7 @@ const commentsReducer = (state = initState, action) => {
       }
     }
 
-    case types.REPLY: {
+    case types.REPLY: { //reply to a comment
       let { target, content } = action.payload;
 
       const commentIdx = Number(target) - 1;

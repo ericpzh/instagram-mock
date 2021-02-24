@@ -6,24 +6,24 @@ const initState = {
   height: 1920,
 };
 
-const screenReducer = (state = initState, action) => {
+const screenReducer = (state = initState, action) => { //allow global access to screen properties
   let { isPortrait, width, height, } = state;
   switch (action.type) {
-    case types.PORTRAIT: {
+    case types.PORTRAIT: { // to portrait mode
       return {
         ...state,
         isPortrait: true,
       }
     }
 
-    case types.LANDSCAPE: {
+    case types.LANDSCAPE: { //to landscape mode
       return {
         ...state,
         isPortrait: false,
       }
     }
 
-    case types.UPDATE_SIZE: {
+    case types.UPDATE_SIZE: { //update window size
       return {
         ...state,
         width: action.payload.width,

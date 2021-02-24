@@ -1,3 +1,5 @@
+//global variable for action type
+
 export const ADD = 'ADD';
 export const LIKE = 'LIKE';
 export const REPLY = 'REPLY';

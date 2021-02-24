@@ -14,7 +14,7 @@ function App(props) {
   const { height, width } = useWindowDimension();
   props.updateSize(height, width);
 
-  if (width < 800) {
+  if (width < 800) { //force to portrait if min-width not met
     props.toPortrait();
     return (
       <Portrait/>

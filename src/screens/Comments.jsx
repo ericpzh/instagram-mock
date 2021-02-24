@@ -1,16 +1,12 @@
 import { avatarGetter } from '../assets/utils/avatarGenerator.js';
 import { useState } from 'react';
-import {
-  Icon,
-  Header,
-  Image,
-} from 'semantic-ui-react';
+import { Icon, Image } from 'semantic-ui-react';
 
-const maxCommentCount = 3;
-const maxCommentLength = 70;
+const maxCommentCount = 3; //maximum of 3 comments shown on portrait
+const maxCommentLength = 70; //maximum of 70char before collaps on portrait's self comment
 
-function TextContent({name, content, hidden, setHidden}) {
-  if (hidden) {
+function TextContent({name, content, hidden, setHidden}) { //format the content text to include # and @
+  if (hidden) { //collaps
     content = content.substring(0, maxCommentLength) + " ...";
   }
 
@@ -45,7 +41,7 @@ function TextContent({name, content, hidden, setHidden}) {
   )
 }
 
-function SinglePortraitComment({id, name, content, liked}, index, likeComment, likable=true, hidden=false, setHidden=undefined){
+function SinglePortraitComment({id, name, content, liked}, index, likeComment, likable=true, hidden=false, setHidden=undefined){ // a single comment on portrait mode
   return (
     <div className="portrait-single-comment" key={id}>
       <div className="portrait-single-comment-text">
@@ -61,9 +57,9 @@ function SinglePortraitComment({id, name, content, liked}, index, likeComment, l
   )
 }
 
-export function PortraitComments(props) {
+export function PortraitComments(props) { //all commments on portrait mode
   const [hidden, setHidden] = useState(true);
-  if (props.comments.length <= maxCommentCount){
+  if (props.comments.length <= maxCommentCount){ //don't show 'View all comments'
     return (
       <div className="portrait-comments-group">
         {
@@ -76,7 +72,7 @@ export function PortraitComments(props) {
         }
       </div>
     );
-  } else {
+  } else { //show 'view all comments'
     return (
       <div className="portrait-comments-group">
         {
@@ -95,7 +91,7 @@ export function PortraitComments(props) {
   }
 }
 
-function SingleReplyComment(replyComment, id, index, replyLikeComment, replyToComment){
+function SingleReplyComment(replyComment, id, index, replyLikeComment, replyToComment){ //single comment under replied comment section
   return (
     <div key={index}>
       <div className="landscape-single-comment">
@@ -130,7 +126,7 @@ function SingleReplyComment(replyComment, id, index, replyLikeComment, replyToCo
   )
 }
 
-function SingleLandscapeComment({id, avatar, name, content, liked, likes, time, replies}, replyComment, index, likeComment, replyLikeComment, replyToComment, expand, setExpand, likable=true){
+function SingleLandscapeComment({id, avatar, name, content, liked, likes, time, replies}, replyComment, index, likeComment, replyLikeComment, replyToComment, expand, setExpand, likable=true){ // a single comment on landscape mode
   return (
     <div key={id}>
       <div className="landscape-single-comment">
@@ -188,7 +184,7 @@ function SingleLandscapeComment({id, avatar, name, content, liked, likes, time, 
   )
 }
 
-export function LandscapeComments(props) {
+export function LandscapeComments(props) { //all comments on landscape mode
   const [expand, setExpand] = useState(Array(props.comments.length).fill(false));
 
   function setSingleExpand(idx, expanded){

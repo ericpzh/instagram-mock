@@ -3,7 +3,7 @@ import pic2 from "../assets/images/pic2.jpg";
 import pic3 from "../assets/images/pic3.jpg";
 import * as types from '../store/types.js';
 
-const initState = {
+const initState = { //the static post
   id: "1",
   avatar: "1",
   name: "alicedubin",
@@ -17,7 +17,7 @@ const initState = {
 const postReducer = (state = initState, action) => {
   let { id, avatar, name, location, pictures, likes, liked } = state;
   switch (action.type) {
-    case types.TOGGLE_LIKED: {
+    case types.TOGGLE_LIKED: { //like this post
       if (action.payload.liked) {
         return {
           ...state,

@@ -9,11 +9,11 @@ const avatars = [
   avatar1, avatar2, avatar3, avatar4, avatar5, avatar6
 ]
 
-export function avatarGenerator(){
+export function avatarGenerator(){//generate a random number as avatar index
   const avatarNum = Math.floor(Math.random() * 6);
   return avatarNum;
 }
 
-export function avatarGetter(avatarNum){
+export function avatarGetter(avatarNum){// get avatar accroding to index
   return avatars[avatarNum];
 }

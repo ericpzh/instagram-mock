@@ -8,7 +8,7 @@ function getWindowDimension() {
   };
 }
 
-export default function useWindowDimension() {
+export default function useWindowDimension() { //hook listening to window resize
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimension());
 
   useEffect(() => {

@@ -6,26 +6,23 @@ import { toggleLiked } from "../actions/postActions.js";
 import { toPortrait } from "../actions/screenActions.js";
 import { avatarGetter } from '../assets/utils/avatarGenerator.js';
 import { LandscapeComments } from "./Comments.jsx";
-
 import {
   Input,
   Segment,
   Image,
-  Header,
   Icon,
   Divider,
 } from 'semantic-ui-react';
 
 
-function Landscape(props) {
-  const [pictureIndex, setPictureIndex] = useState(0);
-  const [prevPictureIndex, setPrevPictureIndex] = useState(undefined);
-  const [inputValue, setInputValue] = useState("");
-  const [replyName, setReplyName] = useState("");
-  const [replyID, setReplyID] = useState(undefined);
+function Landscape(props) { //landscape screen
+  const [pictureIndex, setPictureIndex] = useState(0); //current post picture
+  const [prevPictureIndex, setPrevPictureIndex] = useState(undefined); //previous post picture
+  const [inputValue, setInputValue] = useState(""); //state of input below
+  const [replyName, setReplyName] = useState(""); //name of the comment replied to
+  const [replyID, setReplyID] = useState(undefined); //id of the comment replied to
 
-
-  function replyToComment(name, id){
+  function replyToComment(name, id){ //setState when reply hit to a comment
     setInputValue("@" + name + " ");
     setReplyID(id);
     setReplyName("@" + name + " ");
@@ -42,7 +39,7 @@ function Landscape(props) {
             }}
           >
             {
-              props.post.pictures.map(
+              props.post.pictures.map( //image array sllow slideshow
                 (picture, index) =>
                 <img
                   key={index}
@@ -61,7 +58,7 @@ function Landscape(props) {
               pictureIndex > 0 &&
               <div className="floated-left text-button image-button">
                 <Icon name="arrow circle left" size="big" inverted onClick={
-                  () => {
+                  () => { //left click
                     setPictureIndex(pictureIndex - 1);
                     setPrevPictureIndex(pictureIndex);
                   }
@@ -72,7 +69,7 @@ function Landscape(props) {
               pictureIndex < props.post.pictures.length-1 &&
               <div className="floated-right text-button image-button">
                 <Icon name="arrow circle right" size="big" inverted onClick={
-                  () => {
+                  () => { //right click
                     setPictureIndex(pictureIndex + 1);
                     setPrevPictureIndex(pictureIndex);
                   }
@@ -81,7 +78,7 @@ function Landscape(props) {
             }
             <div className="floated-bottom image-button">
               {
-                props.post.pictures.map(
+                props.post.pictures.map( //icon indicator below
                   (pic, index) => <Icon key={index} size="small" name={index === pictureIndex ? "circle" : "circle outline"} inverted/>
                 )
               }
@@ -147,12 +144,12 @@ function Landscape(props) {
                   (
                     <div className="text-button">
                       <h5 className="post-button" onClick={
-                        ()=>{
+                        ()=>{ //on 'post' hit
                           const content = inputValue;
 
-                          if (replyID && content.substring(0,replyName.length) === replyName) {
+                          if (replyID && content.substring(0,replyName.length) === replyName) { //if it's reply to a comment
                             props.replyComment(replyID, content.substring(replyName.length,));
-                          } else{
+                          } else{ //add new comment
                             props.addComment(content);
                           }
                           setInputValue("");

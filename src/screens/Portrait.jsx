@@ -1,25 +1,23 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import store from "../store";
-import { addComment, likeComment, replyComment } from "../actions/commentsActions.js";
+import { addComment, likeComment } from "../actions/commentsActions.js";
 import { toggleLiked } from "../actions/postActions.js";
 import { toLandscape } from "../actions/screenActions.js";
 import { avatarGetter } from '../assets/utils/avatarGenerator.js';
 import { PortraitComments } from "./Comments.jsx";
-
 import {
   Input,
   Segment,
   Image,
-  Header,
   Icon,
   Divider,
 } from 'semantic-ui-react';
 
 function Portrait(props) {
-  const [pictureIndex, setPictureIndex] = useState(0);
-  const [prevPictureIndex, setPrevPictureIndex] = useState(undefined);
-  const [inputValue, setInputValue] = useState("");
+  const [pictureIndex, setPictureIndex] = useState(0); //current post picture
+  const [prevPictureIndex, setPrevPictureIndex] = useState(undefined); //previous post picture
+  const [inputValue, setInputValue] = useState(""); //state of input below
 
   return (
     <div className="portrait">
@@ -46,12 +44,10 @@ function Portrait(props) {
 
           <div className="portrait-image">
             <div className="portrait-image-wrapper"
-              style={{
-                backgroundImage: "url(" + props.post.pictures[prevPictureIndex] + ")"
-              }}
+              style={{ backgroundImage: "url(" + props.post.pictures[prevPictureIndex] + ")" }}
             >
               {
-                props.post.pictures.map(
+                props.post.pictures.map( //picture array to allow slide show
                   (picture, index) =>
                   <img
                     key={index}
@@ -67,7 +63,7 @@ function Portrait(props) {
                 pictureIndex > 0 &&
                 <div className="floated-left text-button image-button">
                   <Icon name="arrow circle left" size="big" inverted onClick={
-                    () => {
+                    () => { //left click
                       setPictureIndex(pictureIndex - 1);
                       setPrevPictureIndex(pictureIndex);
                     }
@@ -78,7 +74,7 @@ function Portrait(props) {
                 pictureIndex < props.post.pictures.length-1 &&
                 <div className="floated-right text-button image-button">
                   <Icon name="arrow circle right" size="big" inverted onClick={
-                    () => {
+                    () => { //right click
                       setPictureIndex(pictureIndex + 1);
                       setPrevPictureIndex(pictureIndex);
                     }
@@ -96,7 +92,7 @@ function Portrait(props) {
               </div>
               <div>
                 {
-                  props.post.pictures.map(
+                  props.post.pictures.map( //dots indicator of pictures
                     (pic, index) => <Icon key={index} size="mini" name={index === pictureIndex ? "circle" : "circle outline"} />
                   )
                 }
@@ -128,7 +124,7 @@ function Portrait(props) {
               (
                 <div className="text-button">
                   <h5 className="post-button" onClick={
-                    ()=>{
+                    ()=>{ //on 'post' hit
                       props.addComment(inputValue);
                       setInputValue("");
                     }
@@ -140,7 +136,6 @@ function Portrait(props) {
                 </div>
               )
             }
-
           </div>
         </Segment>
       </div>
