@@ -22,7 +22,7 @@ function Portrait(props) {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <div className="portrait centerd">
+    <div className="portrait">
       <div className="container">
         <Segment className="segment">
           <div className="header portrait-header">
@@ -94,7 +94,7 @@ function Portrait(props) {
                 <Icon className="icon-button-center text-button" onClick = {props.toLandscape} size="large" name="comment outline"/>
                 <Icon className="icon-button-center text-button" size="large" name="share square"/>
               </div>
-              <div className="text-button">
+              <div>
                 {
                   props.post.pictures.map(
                     (pic, index) => <Icon key={index} size="mini" name={index === pictureIndex ? "circle" : "circle outline"} />
@@ -150,6 +150,7 @@ function Portrait(props) {
 
 const mapStateToProps = ( state ) => {
   return {
+    screen: state.screen,
     comments: state.comments,
     post: state.post,
   }

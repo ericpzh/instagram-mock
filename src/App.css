@@ -46,6 +46,10 @@
   cursor: pointer;
 }
 
+.text-link {
+  color: #3681ff;
+}
+
 .image-button {
   margin: 10px;
   opacity: 0.85;

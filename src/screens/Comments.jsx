@@ -1,5 +1,5 @@
 import { avatarGetter } from '../assets/utils/avatarGenerator.js';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Icon,
   Header,
@@ -7,12 +7,49 @@ import {
 } from 'semantic-ui-react';
 
 const maxCommentCount = 3;
+const maxCommentLength = 70;
 
-function SinglePortraitComment({id, name, content, liked}, index, likeComment, likable=true){
+function TextContent({name, content, hidden, setHidden}) {
+  if (hidden) {
+    content = content.substring(0, maxCommentLength) + " ...";
+  }
+
+  let contentArray = [""];
+  let currIdx = 0
+
+  for (let char in content) {
+    if (content[char] === "@" || content[char] === "#" || content[char] === " ") {
+      contentArray.push(content[char]);
+      currIdx ++;
+    } else {
+      contentArray[currIdx] += content[char];
+    }
+  }
+
+  return (
+    <p>
+      <strong> { name } </strong> &nbsp;
+      {
+        contentArray.map((content, index) => {
+          if(content[0] === "@" || content[0] === "#"){
+            return <span key={index} className="text-button text-link"> {content} </span>
+          }else{
+            return <span key={index}> {content} </span>
+          }
+        })
+      }
+      {
+        hidden && <span className="text-button" onClick={()=>{setHidden(false)}}> &nbsp; more </span>
+      }
+    </p>
+  )
+}
+
+function SinglePortraitComment({id, name, content, liked}, index, likeComment, likable=true, hidden=false, setHidden=undefined){
   return (
     <div className="portrait-single-comment" key={id}>
       <div className="portrait-single-comment-text">
-        <p> <strong> { name } </strong> &nbsp; { content } </p>
+        <TextContent name={name} content={content} hidden={hidden} setHidden={setHidden}/>
       </div>
       {
         likable &&
@@ -25,11 +62,12 @@ function SinglePortraitComment({id, name, content, liked}, index, likeComment, l
 }
 
 export function PortraitComments(props) {
+  const [hidden, setHidden] = useState(true);
   if (props.comments.length <= maxCommentCount){
     return (
       <div className="portrait-comments-group">
         {
-          SinglePortraitComment(props.comments[0], 0, props.likeComment, false)
+          SinglePortraitComment(props.comments[0], 0, props.likeComment, false, hidden, setHidden)
         }
         {
           props.comments.slice(1,).map(
@@ -42,7 +80,7 @@ export function PortraitComments(props) {
     return (
       <div className="portrait-comments-group">
         {
-          SinglePortraitComment(props.comments[0], 0, props.likeComment, false)
+          SinglePortraitComment(props.comments[0], 0, props.likeComment, false, hidden, setHidden)
         }
         <div className="portrait-forced-left text-button">
           <p className="portrait-comments-view-all-text" onClick={props.toLandscape}> View all {props.comments.length} comments </p>
@@ -65,7 +103,7 @@ function SingleReplyComment(replyComment, id, index, replyLikeComment, replyToCo
           <Image src={avatarGetter(replyComment.avatar)} avatar className="landscape-single-comment-avatar"/>
 
           <div className="landscape-single-comment-text">
-            <p> <strong> { replyComment.name } </strong> &nbsp; { replyComment.content } </p>
+            <TextContent name={replyComment.name} content={replyComment.content}/>
           </div>
         </div>
         <div className="text-button">
@@ -100,7 +138,7 @@ function SingleLandscapeComment({id, avatar, name, content, liked, likes, time, 
           <Image src={avatarGetter(avatar)} avatar className="landscape-single-comment-avatar"/>
 
           <div className="landscape-single-comment-text">
-            <p> <strong> { name } </strong> &nbsp; { content } </p>
+            <TextContent name={name} content={content}/>
           </div>
         </div>
         {

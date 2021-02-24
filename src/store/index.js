@@ -11,8 +11,8 @@ function load() {
   return undefined;
 }
 
-const store = createStore(combineReducers/*, load()*/);
+const store = createStore(combineReducers, load());
 
-//store.subscribe(() => save(store.getState()));
+store.subscribe(() => save(store.getState()));
 
 export default store;

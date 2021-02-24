@@ -32,13 +32,13 @@ function Landscape(props) {
   }
 
   return (
-    <div className="landscape centerd">
+    <div className="landscape">
       <div className="container landscape-container">
         <Segment className="segment landscape-segment">
 
           <div className="landscape-image"
             style={{
-              backgroundImage: "url(" + props.post.pictures[prevPictureIndex] + ")" 
+              backgroundImage: "url(" + props.post.pictures[prevPictureIndex] + ")"
             }}
           >
             {
@@ -79,7 +79,7 @@ function Landscape(props) {
                 }/>
               </div>
             }
-            <div className="floated-bottom text-button image-button">
+            <div className="floated-bottom image-button">
               {
                 props.post.pictures.map(
                   (pic, index) => <Icon key={index} size="small" name={index === pictureIndex ? "circle" : "circle outline"} inverted/>
