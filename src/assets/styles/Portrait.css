@@ -1,0 +1,88 @@
+.portrait {
+  width: 35%;
+  min-width: 540px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.portrait-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.portrait-header-avatar {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.portrait-header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.portrait-header-name {
+  font-size: 13px;
+}
+
+.portrait-header-location {
+  font-size: 11px;
+}
+
+.portrait-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.portrait-image-reactions{
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portrait-likes-count{
+  display: flex;
+  margin-bottom: 10px !important;
+  margin-left: 15px !important;
+}
+
+.portrait-forced-left {
+  display: flex;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 15px !important;
+}
+
+.portrait-time {
+  margin-top: 10px;
+}
+
+.portrait-time-text {
+  font-size: 10px;
+  color: grey;
+}
+
+.portrait-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.portrait-image-wrapper img{
+  min-width: 100%;
+  min-height: 100%;
+}

@@ -1,0 +1,67 @@
+.landscape {
+  width: 95%;
+  min-width: 540px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.landscape-divider {
+  margin: 10px 0 10px 0 !important;
+}
+
+.landscape-segment {
+  min-width: 800px !important;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.landscape-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.landscape-image img{
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.landscape-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.landscape-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landscape-header-avatar {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.landscape-header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.landscape-header-location {
+    font-size: 12px;
+}

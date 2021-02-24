@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import { connect } from 'react-redux';
 import './App.css';
+import './assets/styles/Portrait.css';
+import './assets/styles/Landscape.css';
+import './assets/styles/Comments.css';
+import 'semantic-ui-css/semantic.min.css';
+import Portrait from "./screens/Portrait";
+import Landscape from "./screens/Landscape";
+import useWindowDimension from "./assets/utils/useWindowDimension.js";
+import { updateSize } from "./actions/screenActions.js";
+import { toPortrait } from "./actions/screenActions.js";
 
-function App() {
+function App(props) {
+  const { height, width } = useWindowDimension();
+  props.updateSize(height, width);
+
+  if (width < 800) {
+    props.toPortrait();
+    return (
+      <Portrait/>
+    )
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        props.isPortrait ? <Portrait/> : <Landscape/>
+      }
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isPortrait: state.screen.isPortrait,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateSize: (height, width) => dispatch(updateSize(height, width)),
+    toPortrait: () => dispatch(toPortrait()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
