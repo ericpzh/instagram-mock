@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/instagram-mock/static/css/main.87292cc6.chunk.css",
+    "main.js": "/instagram-mock/static/js/main.6cb3d5e3.chunk.js",
+    "main.js.map": "/instagram-mock/static/js/main.6cb3d5e3.chunk.js.map",
+    "runtime-main.js": "/instagram-mock/static/js/runtime-main.b184bec2.js",
+    "runtime-main.js.map": "/instagram-mock/static/js/runtime-main.b184bec2.js.map",
+    "static/css/2.71c9ef32.chunk.css": "/instagram-mock/static/css/2.71c9ef32.chunk.css",
+    "static/js/2.6870da6b.chunk.js": "/instagram-mock/static/js/2.6870da6b.chunk.js",
+    "static/js/2.6870da6b.chunk.js.map": "/instagram-mock/static/js/2.6870da6b.chunk.js.map",
+    "static/js/3.fc1e98b9.chunk.js": "/instagram-mock/static/js/3.fc1e98b9.chunk.js",
+    "static/js/3.fc1e98b9.chunk.js.map": "/instagram-mock/static/js/3.fc1e98b9.chunk.js.map",
+    "index.html": "/instagram-mock/index.html",
+    "static/css/2.71c9ef32.chunk.css.map": "/instagram-mock/static/css/2.71c9ef32.chunk.css.map",
+    "static/css/main.87292cc6.chunk.css.map": "/instagram-mock/static/css/main.87292cc6.chunk.css.map",
+    "static/js/2.6870da6b.chunk.js.LICENSE.txt": "/instagram-mock/static/js/2.6870da6b.chunk.js.LICENSE.txt",
+    "static/media/avatar1.3c91360a.png": "/instagram-mock/static/media/avatar1.3c91360a.png",
+    "static/media/avatar2.8d623aeb.png": "/instagram-mock/static/media/avatar2.8d623aeb.png",
+    "static/media/avatar3.9472fa5e.png": "/instagram-mock/static/media/avatar3.9472fa5e.png",
+    "static/media/avatar4.dcd01877.png": "/instagram-mock/static/media/avatar4.dcd01877.png",
+    "static/media/avatar5.b69fcbe9.png": "/instagram-mock/static/media/avatar5.b69fcbe9.png",
+    "static/media/avatar6.b21c3fa4.png": "/instagram-mock/static/media/avatar6.b21c3fa4.png",
+    "static/media/semantic.min.css": "/instagram-mock/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/pic1.d78b533a.jpg": "/instagram-mock/static/media/pic1.d78b533a.jpg",
+    "static/media/pic2.b08bd1ee.jpg": "/instagram-mock/static/media/pic2.b08bd1ee.jpg",
+    "static/media/pic3.6274ed2b.jpg": "/instagram-mock/static/media/pic3.6274ed2b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b184bec2.js",
+    "static/css/2.71c9ef32.chunk.css",
+    "static/js/2.6870da6b.chunk.js",
+    "static/css/main.87292cc6.chunk.css",
+    "static/js/main.6cb3d5e3.chunk.js"
+  ]
+}
